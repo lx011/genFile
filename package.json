@@ -1,0 +1,45 @@
+{
+  "name": "generate-file",
+  "version": "0.0.1",
+  "description": "Generate file",
+  "main": "dist/genfile.umd.js",
+  "module": "dist/genfile.esm.js",
+  "typings": "dist/types/genfile.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": "git@github.com:lx011/genFile.git",
+  "author": "Len <cxin1314@gmail.com>",
+  "scripts": {
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "dev": "rollup -c rollup.config.ts",
+    "dev:w": "yarn dev -w"
+  },
+  "keywords": [
+    "generate",
+    "file",
+    "json",
+    "template",
+    "generate-file"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.7.4",
+    "rollup-plugin-babel-minify": "^8.0.0",
+    "rollup-plugin-filesize": "^6.0.1",
+    "rollup-plugin-typescript2": "^0.20.1",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.4000"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "fs-extra": "^7.0.1"
+  }
+}
