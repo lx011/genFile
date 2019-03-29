@@ -5,14 +5,14 @@
 ## Installation
 
 ```bash
-npm install @lx011/genFile --save-dev
-yarn add @lx011/genFile --dev
+npm install @lx011/genfile --save-dev
+yarn add @lx011/genfile --dev
 ```
 
 ## Usage
 
 ```js
-const genFile = require('@lx011/genFile');
+const genFile = require('@lx011/genfile');
 
 // { filename, template, path? = '', update? = false }
 genFile({

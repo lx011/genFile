@@ -38,10 +38,4 @@ var genFile = function (_a) {
     });
 };
 exports.default = genFile;
-// genFile({
-//   filename: 'test.txt',
-//   template: 'test genFile',
-//   path: './test/a/b',
-//   update: true,
-// })
 //# sourceMappingURL=index.js.map

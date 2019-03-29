@@ -1,5 +1,5 @@
 {
-  "name": "generate-file",
+  "name": "genfile",
   "version": "0.0.1",
   "description": "Generate file",
   "main": "dist/genfile.umd.js",
@@ -22,7 +22,8 @@
     "file",
     "json",
     "template",
-    "generate-file"
+    "generate-file",
+    "genfile"
   ],
   "license": "MIT",
   "engines": {
