@@ -1,19 +1,19 @@
 {
   "name": "genfile",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generate file",
   "main": "dist/genfile.umd.js",
   "module": "dist/genfile.esm.js",
-  "typings": "dist/types/genfile.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "repository": "git@github.com:lx011/genFile.git",
   "author": "Len <cxin1314@gmail.com>",
   "scripts": {
-    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
-    "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist docs",
+    "build": "rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "dev": "rollup -c rollup.config.ts",
     "dev:w": "yarn dev -w"
   },
@@ -36,6 +36,9 @@
     "rollup-plugin-babel-minify": "^8.0.0",
     "rollup-plugin-filesize": "^6.0.1",
     "rollup-plugin-typescript2": "^0.20.1",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.3.4000"
   },

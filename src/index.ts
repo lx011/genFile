@@ -18,7 +18,7 @@ const outputContent = (filePath: string, template: object | string, msg: string)
   if (typeof template === 'object') {
     outputJSON(filePath, template, {spaces: 2})
       .then(() => console.info(msg))
-      .catch(err => console.error(errorMsg(err)))
+      .catch(err => console.error(errorMsg(err)));
   } else {
     outputFile(filePath, template)
       .then(() => console.info(msg))
