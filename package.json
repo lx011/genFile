@@ -1,6 +1,6 @@
 {
   "name": "genfile",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Generate file",
   "main": "dist/genfile.umd.js",
   "module": "dist/genfile.esm.js",
@@ -8,8 +8,8 @@
   "files": [
     "dist"
   ],
-  "repository": "git@github.com:lx011/genFile.git",
-  "author": "Len <cxin1314@gmail.com>",
+  "repository": "git@github.com:nofwl/genFile.git",
+  "author": "lencx <cxin1314@gmail.com>",
   "scripts": {
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist docs",

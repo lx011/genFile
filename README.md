@@ -6,12 +6,14 @@
 
 ```bash
 npm install genfile --save-dev
+# or
 yarn add genfile --dev
 ```
 
 ## Usage
 
 ```js
+// import genFile from 'genfile';
 const genFile = require('genfile');
 
 // { filename, template, path? = '', update? = false }
@@ -24,6 +26,7 @@ genFile({
 
 ```
 
-> **Tip:** \
-> *Optional parameter:* `path`, `update` \
-> *default value:* path = '', update = false
+> **Tip:**
+
+* *Optional parameter:* `path`, `update`
+* *default value:* path = '', update = false
