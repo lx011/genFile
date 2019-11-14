@@ -4,5 +4,5 @@ export interface IGenFile {
     path?: string;
     update?: boolean;
 }
-declare const genFile: ({ filename, template, path, update }: IGenFile) => void;
+declare const genFile: ({ filename, template, path, update }: IGenFile) => Promise<string>;
 export default genFile;

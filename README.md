@@ -24,6 +24,16 @@ genFile({
   // update: true, // update file content
 })
 
+Promise.all([
+  genFile({
+    filename: './test/file/a.txt',
+    template: 'test a',
+  }),
+  genFile({
+    filename: './test/file/b.txt',
+    template: 'test b',
+  })
+]).then(state => console.info(state));
 ```
 
 > **Tip:**

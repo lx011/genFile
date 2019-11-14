@@ -1,6 +1,7 @@
 import { outputFile, pathExists, outputJSON } from 'fs-extra';
 import chalk from 'chalk';
 
+const log = console.info;
 const errorMsg = chalk.bold.red;
 const warnMsg = chalk.bold.keyword('orange');
 const createMsg = chalk.bold.green;
@@ -16,29 +17,34 @@ export interface IGenFile {
 
 const outputContent = (filePath: string, template: object | string, msg: string) => {
   if (typeof template === 'object') {
-    outputJSON(filePath, template, {spaces: 2})
-      .then(() => console.info(msg))
+    return outputJSON(filePath, template, {spaces: 2})
+      .then(() => log(msg))
       .catch(err => console.error(errorMsg(err)));
   } else {
-    outputFile(filePath, template)
-      .then(() => console.info(msg))
+    return outputFile(filePath, template)
+      .then(() => log(msg))
       .catch(err => console.error(errorMsg(err)));
   }
 }
 
-const genFile = ({ filename, template, path = '', update } : IGenFile) => {
+const genFile = ({ filename, template, path = '', update } : IGenFile): Promise<string> => {
   let filePath = path.replace(/(^\/)|(\/$)/g, '');
   filePath = filePath ? `${filePath}/${filename}` : filename;
-  pathExists(filePath, (_err, exists) => {
-    if (!exists) {
-      outputContent(filePath, template, `${createMsg('[create]')}: ${lightMsg(filePath)} successfully!`);
-    } else {
-      if (update) {
-        outputContent(filePath, template, `${updateMsg('[update]')}: ${lightMsg(filePath)} successfully!`);
+  return new Promise((res) => {
+    pathExists(filePath, async (_err, exists) => {
+      if (!exists) {
+        await outputContent(filePath, template, `${createMsg('[create]')}: ${lightMsg(filePath)}`);
+        res('create');
       } else {
-        console.info(`${warnMsg('[warn]')}: ${lightMsg(filePath)} already exists!`);
+        if (update) {
+          await outputContent(filePath, template, `${updateMsg('[update]')}: ${lightMsg(filePath)}`)
+          res('update');
+        } else {
+          log(`${warnMsg('[exist]')}: ${lightMsg(filePath)}`)
+          res('exist');
+        }
       }
-    }
+    })
   })
 }
 

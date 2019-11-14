@@ -1,6 +1,6 @@
 {
   "name": "genfile",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Generate file",
   "main": "dist/genfile.umd.js",
   "module": "dist/genfile.esm.js",
@@ -11,11 +11,12 @@
   "repository": "git@github.com:nofwl/genFile.git",
   "author": "lencx <cxin1314@gmail.com>",
   "scripts": {
+    "build": "rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "test": "rimraf ./test/file && ava --verbose",
     "lint": "tslint --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist docs",
-    "build": "rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
     "dev": "rollup -c rollup.config.ts",
-    "dev:w": "yarn dev -w"
+    "dev:watch": "yarn dev -w"
   },
   "keywords": [
     "generate",
@@ -23,13 +24,15 @@
     "json",
     "template",
     "generate-file",
-    "genfile"
+    "genfile",
+    "promise"
   ],
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
   },
   "devDependencies": {
+    "ava": "^2.4.0",
     "lodash.camelcase": "^4.3.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.7.4",
@@ -40,7 +43,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "typedoc": "^0.14.2",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.3.4"
   },
   "dependencies": {
     "chalk": "^2.4.2",
