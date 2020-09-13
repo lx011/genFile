@@ -15,15 +15,21 @@ export interface IGenFile {
   update?: boolean; // update file content
 }
 
-const outputContent = (filePath: string, template: object | string, msg: string) => {
+const outputContent = async (filePath: string, template: object | string, msg: string) => {
   if (typeof template === 'object') {
-    return outputJSON(filePath, template, {spaces: 2})
-      .then(() => log(msg))
-      .catch(err => console.error(errorMsg(err)));
+    try {
+      await outputJSON(filePath, template, { spaces: 2 });
+      return log(msg);
+    } catch (err) {
+      return console.error(errorMsg(err));
+    }
   } else {
-    return outputFile(filePath, template)
-      .then(() => log(msg))
-      .catch(err => console.error(errorMsg(err)));
+    try {
+      await outputFile(filePath, template);
+      return log(msg);
+    } catch (err) {
+      return console.error(errorMsg(err));
+    }
   }
 }
 
